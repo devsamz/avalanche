@@ -1,80 +1,30 @@
-# Hello World! in Solidity
+# Bank Smart Contract
 
+This Solidity smart contract implements a simple banking system with functionalities for depositing, withdrawing, and transferring Ether.
 
-## Install
+## Features
 
-1. Install [Node.js](https://nodejs.org)
+- **Deposit Ether:** Allows users to deposit Ether into the contract.
+- **Withdraw Ether:** Allows users to withdraw their deposited Ether.
+- **Transfer Ether:** Allows users to transfer Ether to another address.
 
-   Download and install from the official site.
+## Error Handling
 
-2. Install [Truffle](https://github.com/trufflesuite/truffle)
+- **`require()`:** Ensures the deposit amount is greater than zero and restricts balance checks to the owner.
+- **`assert()`:** Ensures the initial balance is sufficient for withdrawals.
+- **`revert()`:** Handles invalid addresses and insufficient balances in transfers.
 
-   ```bash
-   npm install -g truffle
-   ```
+## Functions
 
-
-## Initialize
-
-1. Initialize Truffle in your project folder
-
-   ```bash
-   truffle init
-   ```
-
-   After initialization, you will find two folders called `contracts` and `migrations`. Contracts go in the `contracts` folder while contract deployment settings go in `migrations`.
-
-2. The "Hello World!" contract
-
-   This is an example of a "Hello World!" contract in Solidity. 
-   "HelloWorld.sol" in `contracts` contains the following code:
-
-   ```solidity
-   // SPDX-License-Identifier: MIT
-   // compiler version must be greater than or equal to 0.8.17 and less than 0.9.0
-   pragma solidity ^0.8.17;
+1. **deposit()**
+   Deposits Ether into the sender's account.
    
-   contract HelloWorld {
-       string public greet = "Hello World!";
-   }   
-   ```
+2. **withdraw(uint256 amount)**
+   Withdraws Ether from the sender's account.
 
-3. Prepare the migration
+3. **transfer(address to, uint256 amount)**
+   Transfers Ether to the recipient's address.
 
-   "2_deploy_migration.js" in `migrations` contains the following code:
+## License
 
-   ```javascript
-   var HelloWorld = artifacts.require("HelloWorld");
-   module.exports = function(deployer) {
-     deployer.deploy(HelloWorld);
-   }
-   ```
-
-4. Start Truffle console in development mode
-
-   ```bash
-   truffle develop
-   ```
-
-   In the Truffle console, execute
-
-   ```bash
-   compile
-   migrate
-   ```
-   If you want to remigrate existing contracts, run `migrate --reset` instead of simply `migrate`.
-
-5. Test your contract
-
-   In the interactive Truffle console, run the following commands:
-
-   ```javascript
-   let instance = await HelloWorld.deployed()
-   instance.greet()
-   ```
-
-   Then you will see:
-
-   ```bash
-   'Hello World!'
-   ```
+This project is licensed under the MIT License.
