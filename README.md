@@ -1,25 +1,26 @@
-# Decentralized Library Smart Contract
+# My Token Contract
 
-This Solidity smart contract implements a simple decentralized library system where users can add books, borrow books, and return books.
+- **Name:** Ore Token
+- **Symbol:** OTK
 
-## Features
+## Contract Overview
 
-- **Add Book:** Allows users to add new books to the library.
-- **Borrow Book:** Allows users to borrow available books.
-- **Return Book:** Allows users to return borrowed books.
-- **Get Book Details:** Allows users to get details of a specific book.
+This is an ERC-20 called `OreToken` with symbol `OTK`. The Contract inherits OpenZeppelin ERC20 standard, with extra implementation to mint, burn and transfer.
 
-## Error Handling
+## Contract Details
 
-- **`require()`:** Ensures the user has borrowed the book before returning it.
-- **`revert()`:** Handles unavailable books and double borrowing.
-- **`assert()`:** Ensures the book's availability status is correctly updated when borrowed or returned.
+### Constructor
 
-## Events
-- BookAdded(uint256 bookId, string title, string author)
-- BookBorrowed(uint256 bookId, address borrower)
-- BookReturned(uint256 bookId, address borrower)
+During Constructor time, The ERC-20 token name and symbol is set. Also the deployer become the owner of the contract.
 
-## License
+### mint
 
-This project is licensed under the MIT License.
+The mint function allows new tokens to be generated and sent to a specified address. This function can only be called by the contract owner.
+
+### transfer
+
+Allows holders of the token to transfer an amount of the token to another address provided that their balance is greater than that amount.
+
+### burn
+
+This function allows the holders to burn a specified amount, hence erasing it from the total supply. Holders must have sufficient amount to burn
