@@ -1,29 +1,24 @@
-# Bank Smart Contract
+# Decentralized Library Smart Contract
 
-This Solidity smart contract implements a simple banking system with functionalities for depositing, withdrawing, and transferring Ether.
+This Solidity smart contract implements a simple decentralized library system where users can add books, borrow books, and return books.
 
 ## Features
 
-- **Deposit Ether:** Allows users to deposit Ether into the contract.
-- **Withdraw Ether:** Allows users to withdraw their deposited Ether.
-- **Transfer Ether:** Allows users to transfer Ether to another address.
+- **Add Book:** Allows users to add new books to the library.
+- **Borrow Book:** Allows users to borrow available books.
+- **Return Book:** Allows users to return borrowed books.
+- **Get Book Details:** Allows users to get details of a specific book.
 
 ## Error Handling
 
-- **`require()`:** Ensures the deposit amount is greater than zero and restricts balance checks to the owner.
-- **`assert()`:** Ensures the initial balance is sufficient for withdrawals.
-- **`revert()`:** Handles invalid addresses and insufficient balances in transfers.
+- **`require()`:** Ensures the user has borrowed the book before returning it.
+- **`revert()`:** Handles unavailable books and double borrowing.
+- **`assert()`:** Ensures the book's availability status is correctly updated when borrowed or returned.
 
-## Functions
-
-1. **deposit()**
-   Deposits Ether into the sender's account.
-   
-2. **withdraw(uint256 amount)**
-   Withdraws Ether from the sender's account.
-
-3. **transfer(address to, uint256 amount)**
-   Transfers Ether to the recipient's address.
+## Events
+- BookAdded(uint256 bookId, string title, string author)
+- BookBorrowed(uint256 bookId, address borrower)
+- BookReturned(uint256 bookId, address borrower)
 
 ## License
 
