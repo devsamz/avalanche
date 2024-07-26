@@ -77,7 +77,7 @@ This function allows the holders to burn a specified amount, hence erasing it fr
 
 ## Authors
 
-Samuel Dahunsi
+Oreoluwa
 
 ## License
 
